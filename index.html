@@ -95,7 +95,7 @@
 
                         <li v-for="(contact,index) in contacts" @click="setContactActive(index)">
                             
-                            <div class="contact d-flex justify-content-between px-2">
+                            <div class="contact d-flex justify-content-between px-2" :class="contactActive == index ? 'bg_light' : '' ">
 
                                 <div>
 

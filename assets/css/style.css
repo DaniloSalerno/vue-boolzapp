@@ -103,6 +103,10 @@ button {
     background-color: #fafafa;
     height: 50px;
 }
+
+.bg_light {
+    background-color: var(--bz-light);
+}
 /* /#list_message */
 
 
