@@ -15,7 +15,7 @@
     --bz-success: #D5F9BA;
     --bz-icon: #b1b1b1;
     --bz-primary-light: #8EDAFC;
-    --bz-nav-bottom-light: #f3eeea;
+    --bz-footer-light: #f3eeea;
 }
 
 body {
@@ -23,13 +23,12 @@ body {
 }
 /* #endregion common */
 
-/* #region main */
+/* #region app*/
 #app::before {
     content: '';
     display: block;
     height: 145px;
     background: var(--bz-header);
-
 }
 
 #app::after {
@@ -48,6 +47,54 @@ body {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-
 }
-/* #endregion main */
+
+.list_header, .chat_header {
+    height: 70px;
+    background-color: var(--bz-light);
+}
+
+/* #endregion app*/
+
+
+
+/* #list_message */
+#list_message {
+    width: 440px;
+}
+
+/* 🔽 doesn't work, to do fix*/
+.user_list ul {
+    overflow-y: auto;
+}
+
+.notifications {
+    height: 80px;
+    background-color: var(--bz-primary-light);
+}
+/* /#list_message */
+
+
+
+/* #chat */
+#chat {
+    width: calc(100% - 440px);
+}
+
+.chat_body {
+    height: calc(100% - 140px);
+    background-image: url('../img/mine.jpg');
+    overflow-y: auto;
+}
+
+.chat_footer {
+    height: 70px;
+    background-color: var(--bz-footer-light);
+}
+/* /#chat */
+
+
+
+
+
+
