@@ -79,8 +79,8 @@ button {
     border-right: 1px solid rgba(0, 0, 0, 0.1);
 }
 
-/* 🔽 doesn't work, to do fix*/
-.contact_list ul {
+.contact_list{
+    height: calc(100% - 200px);
     overflow-y: auto;
 }
 
@@ -101,6 +101,7 @@ button {
 
 .contact_search {
     background-color: #fafafa;
+    height: 50px;
 }
 /* /#list_message */
 
