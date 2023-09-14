@@ -24,12 +24,17 @@ body {
 /* #endregion common */
 
 /* #region main */
-.bg_top {
+#app::before {
+    content: '';
+    display: block;
     height: 145px;
     background: var(--bz-header);
+
 }
 
-.bg_bottom {
+#app::after {
+    content: '';
+    display: block;
     height: calc(100% - 145px);
     background: linear-gradient(180deg, #dddbd1, #d2dbdc);
 }
