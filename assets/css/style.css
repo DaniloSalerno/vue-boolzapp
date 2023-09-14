@@ -1,0 +1,21 @@
+/* #region common */
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+
+:root {
+    --bz-header: #009688;
+    --bz-bg-top: #dddbd1;
+    --bz-bg-bottom: #d2dbdc;
+    --bz-list-light: #e9ebeb;
+    --bz-white: #FFFFFF;
+    --bz-light: #eaeaea;
+    --bz-success: #D5F9BA;
+    --bz-icon: #b1b1b1;
+    --bz-primary-light: #8EDAFC;
+    --bz-nav-bottom-light: #f3eeea;
+}
+/* #endregion common */
