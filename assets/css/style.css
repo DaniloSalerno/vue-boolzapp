@@ -151,6 +151,13 @@ button {
     font-size: 0.6rem;
     padding: 0.1rem;
 }
+
+.last_message, .last_message_time {
+    color: var(--bz-icon);
+    font-size: 0.8rem;
+}
+
+
 /* /#chat */
 
 
