@@ -58,10 +58,11 @@ button:hover {
     background-color: var(--bz-light);
 }
 
-.avatar_options button {
+button {
 
     border: none;
-    color: var(--bz-icon);
+    color: #6b7376;
+    background-color: transparent;
     font-size: 1.25rem;
 }
 
@@ -120,6 +121,7 @@ button:hover {
     height: 70px;
     background-color: var(--bz-footer-light);
 }
+
 /* /#chat */
 
 
