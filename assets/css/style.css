@@ -122,6 +122,34 @@ button {
     background-color: var(--bz-footer-light);
 }
 
+.chat_container{
+    width: 90%;
+    height: 85%;
+    margin: 5% auto;
+}
+
+
+.box_message_send {
+    margin-left: 50%;
+}
+
+.box_message_send, .box_message_received {
+    padding: 0 2rem;
+}
+
+.received {
+    background-color: var(--bz-white);
+    
+}
+
+.send {
+    background-color: var(--bz-success);
+}
+
+.message_time {
+    font-size: 0.6rem;
+    padding: 0.1rem;
+}
 /* /#chat */
 
 
