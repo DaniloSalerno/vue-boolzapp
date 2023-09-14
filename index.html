@@ -23,7 +23,7 @@
 
                     <div class="avatar d-flex align-items-center p-2">
 
-                        <img width="50" src="./assets/img/avatar_io.jpg" alt="immagine dell'utente" class="rounded-circle">
+                        <img width="50" src="./img/avatar_io.jpg" alt="immagine dell'utente" class="rounded-circle">
 
                         <div class="ms-2">
                             Sofia
@@ -58,26 +58,69 @@
                 </div>
                 <!-- /.list_header -->
 
-                <div class="notifications">
+                <div class="notifications d-flex align-items-center ps-3">
+
+                    <div class="bell d-flex justify-content-center align-items-center bg-white rounded-circle">
+
+                        <i class="fa-solid fa-bell-slash"></i>
+                    
+                    </div>
+
+                    <div class="ms-2">
+
+                        <div>Ricevi notifiche di nuovi messaggi</div>
+
+                        <div>
+                            <a href="#" class="text-secondary">Attiva notifiche desktop</a>
+                        </div>
+
+                    </div>
 
                 </div>
                 <!-- /.notifications -->
 
-                <div class="user_search p-2">
+                <div class="contact_search p-2">
+
                     <input type="text" class="w-100" placeholder="Cerca o inizia una nuova chat">
+
                 </div>
 
-                <div class="user_list">
+                <div class="contact_list">
 
                     <ul class="list-unstyled">
 
-                        <li></li>
+                        <li v-for="(contact,index) in contacts">
+                            
+                            <div class="contact d-flex justify-content-between">
+
+                                <div>
+
+                                    <div class="avatar d-flex align-items-center p-2">
+
+                                        <img width="50" :src="contact.avatar" alt="immagine dell'utente" class="rounded-circle">
+                
+                                        <div class="ms-2">
+                                            <div> {{contact.name}} </div>
+                                            <div> INSERIRE ULTIMO MESSAGGIO INVIATO </div>
+                                        </div>
+                
+                                    </div>
+                                    <!-- /.avatar -->
+
+                                </div>
+
+                                <div>12:00</div>
+
+                            </div>
+                            <!-- /.contact -->
+
+                        </li>
 
                     </ul>
                     <!-- /ul -->
 
                 </div>
-                <!-- /.user_list -->
+                <!-- /.contact_list -->
 
             </div>
             <!-- /#list_message -->
@@ -90,7 +133,7 @@
 
                     <div class="avatar d-flex align-items-center p-2">
                         <!-- TODO CAMBIARE IMMAGINE CON QUELLA DELLA CHAT ACTIVE -->
-                        <img width="50" src="./assets/img/avatar_io.jpg" alt="immagine dell'utente" class="rounded-circle">
+                        <img width="50" src="./img/avatar_io.jpg" alt="immagine dell'utente" class="rounded-circle">
 
                         <div class="ms-2">
 

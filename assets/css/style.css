@@ -79,13 +79,27 @@ button:hover {
 }
 
 /* 🔽 doesn't work, to do fix*/
-.user_list ul {
+.contact_list ul {
     overflow-y: auto;
 }
 
 .notifications {
     height: 80px;
     background-color: var(--bz-primary-light);
+}
+
+.notifications .bell {
+    width: 50px;
+    aspect-ratio: 1/1;
+}
+
+.notifications .bell i{
+    color: var(--bz-primary-light);
+    font-size: 1.75rem;
+}
+
+.contact_search {
+    background-color: #fafafa;
 }
 /* /#list_message */
 
@@ -98,7 +112,7 @@ button:hover {
 
 .chat_body {
     height: calc(100% - 140px);
-    background-image: url('../img/mine.jpg');
+    background-image: url('../../img/mine.jpg');
     overflow-y: auto;
 }
 
