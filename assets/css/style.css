@@ -5,7 +5,6 @@
     margin: 0;
 }
 
-
 :root {
     --bz-header: #009688;
     --bz-bg-top: #dddbd1;
@@ -18,4 +17,32 @@
     --bz-primary-light: #8EDAFC;
     --bz-nav-bottom-light: #f3eeea;
 }
+
+body {
+    font-family: Roboto, sans-serif;
+}
 /* #endregion common */
+
+/* #region main */
+.bg_top {
+    height: 145px;
+    background: var(--bz-header);
+}
+
+.bg_bottom {
+    height: calc(100% - 145px);
+    background: linear-gradient(180deg, #dddbd1, #d2dbdc);
+}
+
+#app_body {
+    margin: auto;
+    height: 95%;
+    width: 80%;
+    background-color: white;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+}
+/* #endregion main */
