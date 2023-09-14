@@ -93,7 +93,7 @@
 
                     <ul class="list-unstyled">
 
-                        <li v-for="(contact,index) in contacts">
+                        <li v-for="(contact,index) in contacts" @click="setContactActive(index)">
                             
                             <div class="contact d-flex justify-content-between px-2">
 
@@ -105,7 +105,9 @@
                 
                                         <div class="ms-2">
                                             <div> {{contact.name}} </div>
-                                            <div> INSERIRE ULTIMO MESSAGGIO INVIATO </div>
+                                            <div> 
+                                                {{contact.messages[contact.messages.length - 1].message}} 
+                                            </div>
                                         </div>
                 
                                     </div>
@@ -137,12 +139,12 @@
 
                     <div class="avatar d-flex align-items-center p-2">
                         <!-- TODO CAMBIARE IMMAGINE CON QUELLA DELLA CHAT ACTIVE -->
-                        <img width="50" src="./img/avatar_io.jpg" alt="immagine dell'utente" class="rounded-circle">
+                        <img width="50" :src="contacts[contactActive].avatar"  alt="immagine dell'utente" class="rounded-circle">
 
                         <div class="ms-2">
 
                             <div>
-                                Nome utente chat corrente
+                                {{contacts[contactActive].name}}
                             </div>
 
                             <div>
@@ -185,24 +187,16 @@
 
                     <div class="chat_container">
 
-                        <div class="box_message_send col-6">
+                        <div v-for="(message,index) in contacts[0].messages" class="col-6 mb-2" :class=" message.status === 'sent' ? 'box_message_sent' : 'box_message_received' ">
 
-                            <div class="send rounded-2 d-flex">
-                                <div class="flex-grow-1 p-2">MESSAGGIO</div>
+                            <div class="rounded-2 d-flex" :class=" message.status === 'sent' ? 'sent' : 'received' ">
+                                <div class="flex-grow-1 p-2">
+                                    {{message.message}}
+                                </div>
                                 <div class="message_time d-flex align-items-end">12:00</div>
                             </div>
 
-                        </div>
-
-                        <div class="box_message_received col-6">
-
-                            <div class="received rounded-2 d-flex">
-                                <div class="flex-grow-1 p-2">MESSAGGIO</div>
-                                <div class="message_time d-flex align-items-end">12:00</div>
-                            </div>
-
-                        </div>
-                        
+                        </div>                        
 
                     </div>
                     <!-- /.chat_container -->

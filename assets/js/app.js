@@ -9,6 +9,8 @@ createApp({
     data() {
         return {
 
+            contactActive: 0,
+
             contacts: [
                 {
                     name: 'Michele',
@@ -177,6 +179,12 @@ createApp({
     },
     methods: {
 
+        setContactActive (index) {
+
+            this.contactActive = index;
+            console.log(this.contactActive);
+
+        }
     }
     
 }).mount('#app')
