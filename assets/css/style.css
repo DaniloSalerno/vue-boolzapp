@@ -21,6 +21,10 @@
 body {
     font-family: Roboto, sans-serif;
 }
+
+button:hover {
+    background-color: transparent;
+}
 /* #endregion common */
 
 /* #region app*/
@@ -54,6 +58,13 @@ body {
     background-color: var(--bz-light);
 }
 
+.avatar_options button {
+
+    border: none;
+    color: var(--bz-icon);
+    font-size: 1.25rem;
+}
+
 /* #endregion app*/
 
 
@@ -61,6 +72,10 @@ body {
 /* #list_message */
 #list_message {
     width: 440px;
+}
+
+.list_header {
+    border-right: 1px solid rgba(0, 0, 0, 0.1);
 }
 
 /* 🔽 doesn't work, to do fix*/
