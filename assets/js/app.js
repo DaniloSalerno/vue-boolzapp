@@ -13,6 +13,8 @@ createApp({
 
             userMessage: '',
 
+            contactName: '',
+
             contacts: [
                 {
                     name: 'Michele',
@@ -181,20 +183,32 @@ createApp({
     },
     methods: {
 
-        setContactActive (index) {
+        setContactActive(index) {
 
             this.contactActive = index;
             console.log(this.contactActive);
 
         },
 
-        searchContact () {
-            
-            console.log('hello');
+        searchContact(contactName) {
 
+            this.contacts.forEach(function (item, index, contacts) {
+
+                if (contactName === '') {
+                    contacts[index].visible = true
+                }
+                
+                if (!item.name.toLowerCase().includes(contactName)) {
+
+                    contacts[index].visible = false
+
+                }
+
+
+            })
         },
 
-        sentMessage (userMessage) {
+        sentMessage(userMessage) {
 
             this.contacts[this.contactActive].messages.push({
 
@@ -203,22 +217,22 @@ createApp({
                 status: 'sent'
 
             })
-            
+
             this.userMessage = '';
 
-            timeoutAutoMessage =  setTimeout(this.messageAuto, 1000)
+            timeoutAutoMessage = setTimeout(this.messageAuto, 1000)
         },
 
-        messageAuto () {
+        messageAuto() {
 
             this.contacts[this.contactActive].messages.push({
 
                 date: 'inserire data attuale',
                 message: 'Ok!',
                 status: 'received'
-    
+
             });
         }
     }
-    
+
 }).mount('#app')
