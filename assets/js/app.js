@@ -232,6 +232,12 @@ createApp({
                 status: 'received'
 
             });
+        },
+        
+        deleteThisMessage (message,index) {
+            console.log(message,index);
+
+            this.contacts[this.contactActive].messages.splice(index,1)
         }
     }
 

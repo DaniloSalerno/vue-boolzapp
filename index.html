@@ -130,9 +130,12 @@
                                             <div class="ms-2">
                                                 <div> {{contact.name}} </div>
                                                 <div class="last_message">
-                                                    {{contact.messages[contact.messages.length
+                                                   {{contact.messages[contact.messages.length
                                                     - 1].message}}
                                                 </div>
+                                                <!--  ⏫ DA SISTEMARE ⏫-->
+
+
                                             </div>
 
                                         </div>
@@ -217,18 +220,49 @@
                                 class="mb-2 d-flex flex-column"
                                 :class=" message.status === 'sent' ? 'box_message_sent' : 'box_message_received' ">
 
-                                <div class="rounded-2 d-flex flex-column flex-grow-0"
+                                <div
+                                    class="rounded-2 d-flex flex-column flex-grow-0"
                                     :class=" message.status === 'sent' ? 'sent align-self-end' : 'received align-self-start' ">
 
-                                    <div class="p-2 ps-2 :class=">
-                                        {{message.message}}
+                                    <div class="message_body p-2 ps-2 d-flex gap-1">
+
+                                        <div>{{message.message}}</div>
+
+                                        <button class="message_options d-flex"
+                                            data-bs-toggle="dropdown"
+                                            aria-expanded="false">
+
+                                            <i class="fa fa-chevron-down align-self-center"
+                                                aria-hidden="true"></i>
+
+                                        </button>
+
+                                        <ul
+                                            class="dropdown-menu dropdown-menu-end dropdown-menu-dark">
+                                            <li>
+                                                <div class="dropdown-item">Rispondi</div>
+                                            </li>
+                                            <li>
+                                                <div class="dropdown-item">Reagisci</div>
+                                            </li>
+                                            <li>
+                                                <div class="dropdown-item">Inoltra</div>
+                                            </li>
+                                            <li>
+                                                <div class="dropdown-item">Importante</div>
+                                            </li>
+                                            <li>
+                                                <div class="dropdown-item" @click="deleteThisMessage(message,index)">Elimina</div>
+                                            </li>
+                                        </ul>
+
                                     </div>
 
                                     <div
                                         class="message_time d-flex justify-content-end">
                                         {{message.date}}
                                     </div>
-                                    
+
                                 </div>
 
                             </div>

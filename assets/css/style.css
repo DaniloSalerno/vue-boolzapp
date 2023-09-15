@@ -161,6 +161,15 @@ button {
     padding: 0.1rem;
 }
 
+.message_options i {
+    opacity: 0;
+font-size: 0.75rem;
+}
+
+.message_body:hover .message_options i {
+    opacity: 1;
+}
+
 .last_message, .last_message_time {
     color: var(--bz-icon);
     font-size: 0.8rem;
