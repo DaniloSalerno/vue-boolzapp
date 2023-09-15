@@ -151,6 +151,11 @@ button {
     background-color: var(--bz-success);
 }
 
+.sent, .received {
+    max-width: 50%;
+    word-wrap: break-word;
+}
+
 .message_time {
     font-size: 0.6rem;
     padding: 0.1rem;
