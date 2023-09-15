@@ -3,6 +3,8 @@ Replica della grafica con la possibilità di avere messaggi scritti dall'utente 
 
 Visualizzazione dinamica della lista contatti: tramite la direttiva v-for, visualizzare nome e immagine di ogni contatto */
 
+const { DateTime } = luxon
+
 const { createApp } = Vue
 
 createApp({
@@ -212,7 +214,7 @@ createApp({
 
             this.contacts[this.contactActive].messages.push({
 
-                date: 'inserire data attuale',
+                date: DateTime.now().toFormat('hh:mm'),
                 message: this.userMessage,
                 status: 'sent'
 
@@ -227,7 +229,7 @@ createApp({
 
             this.contacts[this.contactActive].messages.push({
 
-                date: 'inserire data attuale',
+                date: DateTime.now().toFormat('hh:mm'),
                 message: 'Ok!',
                 status: 'received'
 
@@ -245,7 +247,9 @@ createApp({
                     //da fixare
                 })
             }
-        }
+        },
+
+        
     }
 
 }).mount('#app')

@@ -130,8 +130,7 @@
                                             <div class="ms-2">
                                                 <div> {{contact.name}} </div>
                                                 <div class="last_message">
-                                                   {{contact.messages[contact.messages.length
-                                                    - 1].message}}
+                                                    {{contact.messages[contact.messages.length - 1].message}}
                                                 </div>
                                                 <!--  ⏫ DA SISTEMARE ⏫-->
 
@@ -143,7 +142,8 @@
 
                                     </div>
 
-                                    <div class="last_message_time pt-4">12:00</div>
+                                    <div class="last_message_time pt-4">{{contact.messages[contact.messages.length
+                                        - 1].date}}</div>
 
                                 </div>
                                 <!-- /.contact -->
@@ -177,7 +177,7 @@
                                 </div>
 
                                 <div>
-                                    Ultimo accesso alle: METTERE DATA
+                                    Ultimo accesso alle: {{contacts[contactActive].messages[contacts[contactActive].messages.length - 1].date}}
                                 </div>
                             </div>
 
@@ -314,6 +314,8 @@
 
         </div>
 
+
+        <script src="./assets/js/luxon.min.js"></script>
         <script
             src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
