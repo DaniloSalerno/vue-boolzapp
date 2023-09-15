@@ -134,9 +134,9 @@ button {
 }
 
 
-.box_message_sent {
+/* .box_message_sent {
     margin-left: 50%;
-}
+} */
 
 .box_message_sent, .box_message_received {
     padding: 0 2rem;

@@ -190,20 +190,20 @@ createApp({
 
         },
 
+        /* ⏬ THIS DOESN'T WORK AS I WONT ⏬ */
         searchContact(contactName) {
 
             this.contacts.forEach(function (item, index, contacts) {
-
+                
                 if (contactName === '') {
                     contacts[index].visible = true
                 }
-                
+
                 if (!item.name.toLowerCase().includes(contactName)) {
 
                     contacts[index].visible = false
 
                 }
-
 
             })
         },

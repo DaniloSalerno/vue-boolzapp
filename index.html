@@ -102,8 +102,7 @@
                         <input type="text" class="w-100 border-0 rounded-2 px-2"
                             placeholder="Cerca o inizia una nuova chat"
                             v-model="contactName"
-                            @keyup="searchContact(contactName)"
-                            @keyup.delete="searchContact(contactName)">
+                            @keyup="searchContact(contactName)">
 
                     </div>
 
@@ -215,18 +214,21 @@
 
                             <div
                                 v-for="(message,index) in contacts[contactActive].messages"
-                                class="col-6 mb-2"
+                                class="mb-2 d-flex flex-column"
                                 :class=" message.status === 'sent' ? 'box_message_sent' : 'box_message_received' ">
 
-                                <div class="rounded-2 d-flex flex-column"
-                                    :class=" message.status === 'sent' ? 'sent' : 'received' ">
-                                    <div class="flex-grow-1 pt-2 ps-2">
+                                <div class="rounded-2 d-flex flex-column flex-grow-0"
+                                    :class=" message.status === 'sent' ? 'sent align-self-end' : 'received align-self-start' ">
+
+                                    <div class="p-2 ps-2 :class=">
                                         {{message.message}}
                                     </div>
+
                                     <div
                                         class="message_time d-flex justify-content-end">
                                         {{message.date}}
                                     </div>
+                                    
                                 </div>
 
                             </div>
