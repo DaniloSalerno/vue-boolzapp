@@ -221,10 +221,10 @@
                                 :class=" message.status === 'sent' ? 'box_message_sent' : 'box_message_received' ">
 
                                 <div
-                                    class="rounded-2 d-flex flex-column flex-grow-0"
+                                    class="rounded-2"
                                     :class=" message.status === 'sent' ? 'sent align-self-end' : 'received align-self-start' ">
 
-                                    <div class="message_body p-2 ps-2 d-flex gap-1">
+                                    <div class="message_body p-2 ps-2 d-flex justify-content-between gap-1">
 
                                         <div>{{message.message}}</div>
 
