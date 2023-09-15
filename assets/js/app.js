@@ -214,7 +214,7 @@ createApp({
 
             this.contacts[this.contactActive].messages.push({
 
-                date: DateTime.now().toFormat('hh:mm'),
+                date: DateTime.now().toFormat('T'),
                 message: this.userMessage,
                 status: 'sent'
 
@@ -229,7 +229,7 @@ createApp({
 
             this.contacts[this.contactActive].messages.push({
 
-                date: DateTime.now().toFormat('hh:mm'),
+                date: DateTime.now().toFormat('T'),
                 message: 'Ok!',
                 status: 'received'
 
