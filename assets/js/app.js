@@ -210,7 +210,7 @@ createApp({
             })
         },
 
-        sentMessage(userMessage) {
+        sentMessage() {
 
             this.contacts[this.contactActive].messages.push({
 
@@ -247,9 +247,7 @@ createApp({
                     //da fixare
                 })
             }
-        },
-
-        
+        }
     }
 
 }).mount('#app')
