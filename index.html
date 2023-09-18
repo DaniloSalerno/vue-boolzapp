@@ -113,9 +113,8 @@
                             <li v-for="(contact,index) in contacts"
                                 @click="setContactActive(index)">
 
-
                                 <!-- v-if="contact.visible" v-if="contact.name.toLowerCase().includes(contactName.toLowerCase())" -->
-                                <div v-if="contact.visible" 
+                                <div v-if="contact.visible"
                                     class="contact d-flex justify-content-between px-2"
                                     :class="contactActive == index ? 'bg_light' : '' ">
 
@@ -132,7 +131,8 @@
                                             <div class="ms-2">
                                                 <div> {{contact.name}} </div>
                                                 <!-- FIXARE V-IF v-if="contact.messages.length > 0"-->
-                                                <div class="last_message" v-if="contact.messages.length > 0">
+                                                <div class="last_message"
+                                                    v-if="contact.messages.length > 0">
                                                     {{contact.messages[contact.messages.length
                                                     - 1].message}}
                                                 </div>
@@ -152,14 +152,15 @@
                                     </div>
 
                                     <!-- FIXARE V-IF v-if="contact.messages.length > 0"-->
-                                    <div class="last_message_time pt-4 col-2" v-if="contact.messages.length > 0"
-                                        >
+                                    <div class="last_message_time pt-4 col-2"
+                                        v-if="contact.messages.length > 0">
                                         {{contact.messages[contact.messages.length
                                         - 1].date}}
                                     </div>
-                                    
-                                    <div v-else class="last_message_time pt-4 col-2">
-                                       
+
+                                    <div v-else
+                                        class="last_message_time pt-4 col-2">
+
                                     </div>
 
                                 </div>
@@ -193,8 +194,9 @@
                                     {{contacts[contactActive].name}}
                                 </div>
 
-                                <div v-if="contacts[contactActive].messages.length > 0">
-                                    
+                                <div
+                                    v-if="contacts[contactActive].messages.length > 0">
+
                                     <!-- {{contacts[contactActive].messages[contacts[contactActive].messages.length
                                     - 1].date}} -->
 
@@ -220,11 +222,24 @@
 
                             </button>
 
-                            <button>
+                            <button class="contact_options d-flex"
+                                data-bs-toggle="dropdown"
+                                aria-expanded="false">
 
                                 <i class="fa-solid fa-ellipsis-vertical"></i>
 
                             </button>
+
+                            <ul
+                                class="dropdown-menu dropdown-menu-end dropdown-menu-dark">
+                                <li>
+                                    <div class="dropdown-item" @click="deleteAllMessages()">Elimina messaggi</div>
+                                </li>
+                                <li>
+                                    <div class="dropdown-item" @click="deleteChat()">Elimina chat</div>
+                                </li>
+
+                            </ul>
 
                         </div>
                         <!-- /.avatar_options -->
@@ -240,8 +255,9 @@
                                 v-for="(message,index) in contacts[contactActive].messages"
                                 class="mb-2 d-flex flex-column"
                                 :class=" message.status === 'sent' ? 'box_message_sent' : 'box_message_received' ">
-                                
-                                <div  v-if="contacts[contactActive].messages.length > 0"
+
+                                <div
+                                    v-if="contacts[contactActive].messages.length > 0"
                                     class="rounded-2"
                                     :class=" message.status === 'sent' ? 'sent align-self-end' : 'received align-self-start' ">
 
@@ -291,8 +307,9 @@
 
                             </div>
 
-                            
-                            <div v-if="contacts[contactActive].messages.length === 0" class="w-50 m-auto text-center">
+                            <div
+                                v-if="contacts[contactActive].messages.length === 0"
+                                class="w-50 m-auto text-center">
                                 Nessun messaggio da mostrare
                             </div>
 
@@ -316,7 +333,8 @@
                             <input type="text" placeholder="Scrivi un messaggio"
                                 class="w-100 h-100 border-0 rounded-2 px-2"
                                 v-model="userMessage"
-                                @keyup.enter="sentMessage()" @keyup="displayMicOrSend()">
+                                @keyup.enter="sentMessage()"
+                                @keyup="displayMicOrSend()">
 
                         </div>
 

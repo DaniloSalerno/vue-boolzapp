@@ -303,6 +303,18 @@ createApp({
 
         },
 
+        deleteAllMessages () {
+
+            this.contacts[this.contactActive].messages.splice(0)
+
+        },
+
+        deleteChat () {
+
+            this.contacts.splice([this.contactActive],1)
+
+        },
+
         displayMicOrSend () {
             
             
