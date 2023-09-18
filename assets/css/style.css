@@ -124,6 +124,8 @@ button {
 /* #chat */
 #chat {
     width: 100%;
+    background-color: var(--bz-footer-light);
+
 }
 
 .chat_body {

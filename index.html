@@ -24,11 +24,14 @@
 
         <div id="app" class="vh-100">
 
-            <main v-if="splashPage" id="app_body" class="d-flex"  :class="bigFont == true ? 'fs-4' : '' ">
+            <main v-if="splashPage" id="app_body" class="d-flex"
+                :class="bigFont == true ? 'fs-4' : '' ">
 
-                <div id="list_message"   :class="contactList == false ? 'd-none d-lg-block' : 'd-block' ">
+                <div id="list_message"
+                    :class="contactList == false ? 'd-none d-lg-block' : 'd-block' ">
 
-                    <div class="list_header d-flex justify-content-between" :class="darkMode == true ? 'bg-dark text-light' : '' ">
+                    <div class="list_header d-flex justify-content-between"
+                        :class="darkMode == true ? 'bg-dark text-light' : '' ">
 
                         <div class="avatar d-flex align-items-center p-2">
 
@@ -45,7 +48,6 @@
 
                         <div
                             class="avatar_options d-flex align-items-center gap-3 pe-3">
-
 
                             <button @click="toggleDarkMode()">
 
@@ -83,7 +85,8 @@
                     </div>
                     <!-- /.list_header -->
 
-                    <div class="notifications d-flex align-items-center ps-3" :class="darkMode == true ? 'bg-dark text-light' : '' ">
+                    <div class="notifications d-flex align-items-center ps-3"
+                        :class="darkMode == true ? 'bg-dark text-light' : '' ">
 
                         <div
                             class="bell d-flex justify-content-center align-items-center bg-white rounded-circle">
@@ -106,13 +109,16 @@
                     </div>
                     <!-- /.notifications -->
 
-                    <div class="contact_search p-2 d-flex" :class="darkMode == true ? 'bg-dark text-light' : '' ">
+                    <div class="contact_search p-2 d-flex"
+                        :class="darkMode == true ? 'bg-dark text-light' : '' ">
 
-                        <button class="d-inline-block bg-white px-4 bg-transparent">
+                        <button
+                            class="d-inline-block bg-white px-4 bg-transparent">
                             <i class="fa-solid fa-magnifying-glass"></i>
                         </button>
 
-                        <input type="text" class="w-100 border-0 rounded-2 px-2" :class="darkMode == true ? 'bg-dark text-light' : '' "
+                        <input type="text" class="w-100 border-0 rounded-2 px-2"
+                            :class="darkMode == true ? 'bg-dark text-light' : '' "
                             placeholder="Cerca o inizia una nuova chat"
                             v-model="contactName"
                             @keyup="searchContact()">
@@ -128,7 +134,8 @@
                             aria-labelledby="exampleModalLabel"
                             aria-hidden="true">
                             <div class="modal-dialog">
-                                <div class="modal-content">
+                                <div class="modal-content"
+                                    :class="darkMode == true ? 'bg-dark text-light' : '' ">
                                     <div class="modal-header">
                                         <h1 class="modal-title fs-5"
                                             id="exampleModalLabel">Crea una
@@ -141,7 +148,8 @@
                                     <div class="modal-body">
 
                                         <div class="form-floating mb-3">
-                                            <input v-model="nameNewChat" type="text"
+                                            <input v-model="nameNewChat"
+                                                type="text"
                                                 class="form-control"
                                                 id="name"
                                                 required>
@@ -149,11 +157,13 @@
                                         </div>
 
                                         <div class="form-floating mb-3">
-                                            <input v-model="imgNewChat" type="text"
+                                            <input v-model="imgNewChat"
+                                                type="text"
                                                 class="form-control"
                                                 id="img"
                                                 required>
-                                            <label for="img">Link Immagine Profilo</label>
+                                            <label for="img">Link Immagine
+                                                Profilo</label>
                                         </div>
 
                                     </div>
@@ -161,7 +171,9 @@
                                     <div class="modal-footer">
 
                                         <button type="button"
-                                            class="btn btn-success" data-bs-dismiss="modal" @click="newChat()">
+                                            class="btn btn-success"
+                                            data-bs-dismiss="modal"
+                                            @click="newChat()">
                                             Crea
                                         </button>
                                     </div>
@@ -172,17 +184,18 @@
 
                     </div>
 
-                    <div class="contact_list" :class="darkMode == true ? 'bg-dark text-light' : '' ">
+                    <div class="contact_list"
+                        :class="darkMode == true ? 'bg-dark text-light' : '' ">
 
                         <ul class="list-unstyled">
 
                             <li v-for="(contact,index) in contacts"
                                 @click="setContactActive(index)">
 
-                                <!-- v-if="contact.visible" v-if="contact.name.toLowerCase().includes(contactName.toLowerCase())" -->
                                 <div v-if="contact.visible"
                                     class="contact d-flex justify-content-between px-2"
-                                    :class="contactActive == index ? 'bg_light text-dark' : '' " :class="darkMode == true ? 'bg-dark text-light' : '' ">
+                                    :class="contactActive == index ? 'bg_light text-dark' : '' "
+                                    :class="darkMode == true ? 'bg-dark text-light' : '' ">
 
                                     <div>
 
@@ -196,19 +209,16 @@
 
                                             <div class="ms-2">
                                                 <div> {{contact.name}} </div>
-                                                <!-- FIXARE V-IF v-if="contact.messages.length > 0"-->
+                                                
                                                 <div class="last_message"
-                                                    v-if="contact.messages.length > 0" :class="bigFont == true ? 'fs-6' : '' ">
+                                                    v-if="contact.messages.length > 0"
+                                                    :class="bigFont == true ? 'fs-6' : '' ">
                                                     {{contact.messages[contact.messages.length
                                                     - 1].message}}
                                                 </div>
                                                 <div v-else class="last_message">
                                                     Nessun messaggio da mostrare
                                                 </div>
-                                                <!-- <div v-else  class="last_message">
-                                                    Nessun messaggio da mostrare
-                                                </div> -->
-                                                <!--  ⏫ DA SISTEMARE ⏫-->
 
                                             </div>
 
@@ -217,9 +227,10 @@
 
                                     </div>
 
-                                    <!-- FIXARE V-IF v-if="contact.messages.length > 0"-->
-                                    <div class="last_message_time pt-4 col-3 text-end"
-                                        v-if="contact.messages.length > 0" :class="bigFont == true ? 'fs-6' : '' ">
+                                    <div
+                                        class="last_message_time pt-4 col-3 text-end"
+                                        v-if="contact.messages.length > 0"
+                                        :class="bigFont == true ? 'fs-6' : '' ">
                                         {{contact.messages[contact.messages.length
                                         - 1].date}}
                                     </div>
@@ -243,18 +254,22 @@
                 </div>
                 <!-- /#list_message -->
 
-                <div id="chat" :class="chatContact == false ? 'd-none d-lg-block' : 'd-block' ">
+                <div id="chat"
+                    :class="chatContact == false ? 'd-none d-lg-block' : 'd-block' ">
 
-                    <div class="chat_header d-flex justify-content-between" :class="darkMode == true ? 'bg-dark text-light' : '' ">
+                    <div class="chat_header d-flex justify-content-between"
+                        :class="darkMode == true ? 'bg-dark text-light' : '' ">
 
-                        <div v-if="contactSelected" class="avatar d-flex align-items-center p-2">
+                        <div v-if="contactSelected"
+                            class="avatar d-flex align-items-center p-2">
 
                             <button @click="backToChatList()">
 
-                                <i class="fa-solid fa-chevron-left d-lg-none me-3"></i>
+                                <i
+                                    class="fa-solid fa-chevron-left d-lg-none me-3"></i>
 
                             </button>
-                            
+
                             <img width="50"
                                 :src="contacts[contactActive].avatar"
                                 alt="immagine dell'utente"
@@ -268,12 +283,9 @@
 
                                 <div
                                     v-if="contacts[contactActive].messages.length > 0">
-
-                                    <!-- {{contacts[contactActive].messages[contacts[contactActive].messages.length
-                                    - 1].date}} -->
-
                                     {{userStatus}}
                                 </div>
+
                             </div>
 
                         </div>
@@ -394,12 +406,15 @@
                     </div>
                     <!-- /.chat_body -->
 
-                    <div v-else class="chat_body d-flex justify-content-center align-items-center">
-                        <div class="fs-3">Benvenuto! Seleziona una chat per iniziare</div>
+                    <div v-else
+                        class="chat_body d-flex justify-content-center align-items-center">
+                        <div class="fs-3">Benvenuto! Seleziona una chat per
+                            iniziare</div>
                     </div>
 
                     <div
-                        class="chat_footer d-flex justify-content-around align-items-center gap-3 px-3" :class="darkMode == true ? 'bg-dark text-light' : '' ">
+                        class="chat_footer d-flex justify-content-around align-items-center gap-3 px-3"
+                        :class="darkMode == true ? 'bg-dark text-light' : '' " v-if="contactSelected === true">
 
                         <button>
 
@@ -438,7 +453,8 @@
             </main>
             <!-- /#app_body -->
 
-            <div v-else class="d-flex justify-content-center align-items-center position-absolute start-50 translate-middle-x">
+            <div v-else
+                class="d-flex justify-content-center align-items-center position-absolute start-50 translate-middle-x">
                 <h1>Benvenuto in boolzapp</h1>
             </div>
 

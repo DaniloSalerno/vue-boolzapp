@@ -29,7 +29,7 @@ Grafica
 ✅ 13)aggiungere un'icona per cambiare la modalità light/dark: dovrebbe essere sufficiente aggiungere una classe al wrapper principale */
 
 const { DateTime } = luxon
-const { nextTick } = Vue
+const { nextTick } = Vue //Da controllare
 const { createApp } = Vue
 
 createApp({
@@ -52,16 +52,16 @@ createApp({
 
             contactSelected: false,
 
-            contactList : true,
+            contactList: true,
 
-            chatContact : false,
+            chatContact: false,
 
-            bigFont : false,
+            bigFont: false,
 
-            darkMode : false,
+            darkMode: false,
 
             //FIXARE DATA PRENDENDOLA DA MESSAGES.DATE
-            userStatus:'Ultimo accesso alle:' + DateTime.fromISO(2023-9-17).toFormat('T'),
+            userStatus: 'Ultimo accesso alle:' + DateTime.fromISO(2023 - 9 - 17).toFormat('T'),
 
             messagesOutput: [
                 'Ok!',
@@ -243,7 +243,7 @@ createApp({
         setContactActive(index) {
 
             this.contactActive = index;
-            
+
             this.contactSelected = true;
 
             this.chatContact = true;
@@ -267,8 +267,8 @@ createApp({
             })
         },
 
-        
-        //VOLEVO USARE ASYNC/AWAIT PER fare scroll in giù in automatico fino al messaggio più recente, quando viene aggiunto un nuovo messaggio alla conversazione ma non funziona/non so come fare
+
+        //VOLEVO USARE ASYNC/AWAIT PER fare scroll in giù in automatico fino al messaggio più recente quando viene aggiunto un nuovo messaggio alla conversazione ma non funziona/non so come fare
         async sentMessage() {
 
             this.userStatus = 'Sta scrivendo...'
@@ -282,7 +282,7 @@ createApp({
                     status: 'sent'
 
                 })
-                
+
                 timeoutAutoMessage = setTimeout(this.messageAuto, 1000);
                 statusContact = setTimeout(this.statusOnline, 3000)
             }
@@ -291,33 +291,31 @@ createApp({
             this.displayMic = true;
 
             await this.nextTick()
-            
+
         },
 
         messageAuto() {
-
-            
 
             this.contacts[this.contactActive].messages.push({
 
                 date: DateTime.now().toFormat('T'),
 
-                message: this.messagesOutput[Math.floor(Math.random()* this.messagesOutput.length)],
+                message: this.messagesOutput[Math.floor(Math.random() * this.messagesOutput.length)],
 
                 status: 'received'
 
             });
 
-            this.userStatus='Online'
+            this.userStatus = 'Online'
 
         },
 
-        statusOnline () {
+        statusOnline() {
             //FIXARE DATA PRENDENDOLA DA MESSAGES.DATE
-            this.userStatus= 'Ultimo accesso alle:' + DateTime.fromISO(2023-9-17).toFormat('T')
+            this.userStatus = 'Ultimo accesso alle:' + DateTime.fromISO(2023 - 9 - 17).toFormat('T')
         },
-        
-        
+
+
 
         deleteThisMessage(message, index) {
             console.log(message, index);
@@ -326,31 +324,31 @@ createApp({
 
         },
 
-        deleteAllMessages () {
+        deleteAllMessages() {
 
             this.contacts[this.contactActive].messages.splice(0)
 
         },
 
-        deleteChat () {
+        deleteChat() {
 
-            this.contacts.splice([this.contactActive],1)
-            //NON FUNZIONA SULLE NUOVE CHAT CREATE
+            this.contacts.splice([this.contactActive], 1)
+
         },
 
-        newChat () {
+        newChat() {
 
             if (this.nameNewChat.trim() !== '') {
 
                 this.contacts.unshift({
 
                     name: this.nameNewChat,
-                    avatar: `https://picsum.photos/200/300?random=${Math.floor(Math.random()*100)+1}`,
+                    avatar: `https://picsum.photos/200/300?random=${Math.floor(Math.random() * 100) + 1}`,
                     visible: true,
                     messages: []
 
                 })
-                
+
             }
 
             this.nameNewChat = '';
@@ -358,25 +356,25 @@ createApp({
 
         },
 
-        displayMicOrSend () {
-            
-            
+        displayMicOrSend() {
+
+
 
             if (this.userMessage.trim() !== '') {
 
                 this.displayMic = false;
 
             }
-            
+
         },
 
-        closeSplashPage () {
+        closeSplashPage() {
             setTimeout(() => {
                 this.splashPage = true;
-            },1000)
+            }, 1000)
         },
 
-        backToChatList () {
+        backToChatList() {
 
             this.chatContact = false;
 
@@ -384,12 +382,12 @@ createApp({
 
         },
 
-        toggleFontSize () {
+        toggleFontSize() {
 
             if (this.bigFont === false) {
 
                 this.bigFont = true;
-                
+
             } else {
 
                 this.bigFont = false;
@@ -398,12 +396,12 @@ createApp({
 
         },
 
-        toggleDarkMode () {
+        toggleDarkMode() {
 
             if (this.darkMode === false) {
 
                 this.darkMode = true;
-                
+
             } else {
 
                 this.darkMode = false;
@@ -413,10 +411,10 @@ createApp({
         }
 
     },
-    
-    created () {
+
+    created() {
         this.closeSplashPage()
     }
 
-    
+
 }).mount('#app')
