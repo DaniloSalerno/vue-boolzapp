@@ -26,7 +26,7 @@
 
             <main v-if="splashPage" id="app_body" class="d-flex">
 
-                <div id="list_message">
+                <div id="list_message"   :class="contactList == false ? 'd-none d-lg-block' : 'd-block' ">
 
                     <div class="list_header d-flex justify-content-between">
 
@@ -230,11 +230,17 @@
                 </div>
                 <!-- /#list_message -->
 
-                <div id="chat">
+                <div id="chat" :class="chatContact == false ? 'd-none d-lg-block' : 'd-block' ">
 
                     <div class="chat_header d-flex justify-content-between">
 
                         <div v-if="contactSelected" class="avatar d-flex align-items-center p-2">
+
+                            <button @click="backToChatList()">
+
+                                <i class="fa-solid fa-chevron-left d-lg-none me-3"></i>
+
+                            </button>
                             
                             <img width="50"
                                 :src="contacts[contactActive].avatar"

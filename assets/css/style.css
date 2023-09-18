@@ -76,7 +76,7 @@ button {
 
 /* #list_message */
 #list_message {
-    width: 440px;
+    width: 100%;
 }
 
 .list_header {
@@ -122,7 +122,7 @@ button {
 
 /* #chat */
 #chat {
-    width: calc(100% - 440px);
+    width: 100%;
 }
 
 .chat_body {
@@ -190,5 +190,15 @@ font-size: 0.75rem;
 
 
 
+@media screen and (min-width: 992px)  {
 
+    #list_message {
+        width: 440px;
+    }
 
+    #chat{
+        width: calc(100% - 440px);
+    }
+    
+    
+}
