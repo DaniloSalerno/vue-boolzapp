@@ -20,11 +20,11 @@
             rel="stylesheet">
         <link rel="stylesheet" href="./assets/css/style.css">
     </head>
-    <body class="debug">
+    <body>
 
         <div id="app" class="vh-100">
 
-            <main id="app_body" class="d-flex">
+            <main v-if="splashPage" id="app_body" class="d-flex">
 
                 <div id="list_message">
 
@@ -234,8 +234,8 @@
 
                     <div class="chat_header d-flex justify-content-between">
 
-                        <div class="avatar d-flex align-items-center p-2">
-                            <!-- TODO CAMBIARE IMMAGINE CON QUELLA DELLA CHAT ACTIVE -->
+                        <div v-if="contactSelected" class="avatar d-flex align-items-center p-2">
+                            
                             <img width="50"
                                 :src="contacts[contactActive].avatar"
                                 alt="immagine dell'utente"
@@ -260,7 +260,7 @@
                         </div>
                         <!-- /.avatar -->
 
-                        <div
+                        <div v-if="contactSelected"
                             class="avatar_options d-flex align-items-center gap-3 pe-3">
 
                             <button>
@@ -303,7 +303,7 @@
                     </div>
                     <!-- /.chat_header -->
 
-                    <div class="chat_body">
+                    <div class="chat_body" v-if="contactSelected">
 
                         <div class="chat_container">
 
@@ -375,6 +375,10 @@
                     </div>
                     <!-- /.chat_body -->
 
+                    <div v-else class="chat_body d-flex justify-content-center align-items-center">
+                        <div class="fs-3">Benvenuto! Seleziona una chat per iniziare</div>
+                    </div>
+
                     <div
                         class="chat_footer d-flex justify-content-around align-items-center gap-3 px-3">
 
@@ -414,6 +418,10 @@
 
             </main>
             <!-- /#app_body -->
+
+            <div v-else class="d-flex justify-content-center align-items-center position-absolute start-50 translate-middle-x">
+                <h1>Benvenuto in boolzapp</h1>
+            </div>
 
         </div>
 
