@@ -193,22 +193,26 @@ createApp({
         },
 
         /* ⏬ THIS DOESN'T WORK AS I WONT ⏬ */
-        searchContact(contactName) {
+         searchContact(contactName) {
 
             this.contacts.forEach(function (item, index, contacts) {
                 
-                if (contactName === '') {
+                if (contactName === '' && contacts[index].messages.length > 0) {
+
                     contacts[index].visible = true
+                    
                 }
 
-                if (!item.name.toLowerCase().includes(contactName)) {
+                if (!item.name.toLowerCase().includes(contactName.toLowerCase())) {
 
                     contacts[index].visible = false
 
                 }
 
+                 //QUANDO VIENE CANCELLATA UNA LETTERA NON VIENE ESEGUITO IL CONTROLLO 
+
             })
-        },
+        }, 
 
         sentMessage() {
 
@@ -238,14 +242,21 @@ createApp({
         
         deleteThisMessage (message,index) {
             console.log(message,index);
-
+            
             this.contacts[this.contactActive].messages.splice(index,1)
+            /* DOPO AVER CLICCATO ELIMINA SULL' ULTIMO MESSAGGIO RIMASTO NON VIENE ELIMINATO.
+            L'IF CHE SEGUE SERVE PER ELIMINARE IL CONTATTO DALLA LISTA MA FUNZIONA SOLO SE VIENE CLICCATO UN ALTRO CONTATTO
+            */
 
             if (this.contacts[this.contactActive].messages.length == 0) {
 
                 this.contacts[this.contactActive].messages.push({
-                    //da fixare
+                    message: 'Nessun messaggio da mostrare'
                 })
+
+                //⏬SE NON CI SONO MESSAGGI ELIMINA CONTATTO DALLA LISTA⏬
+
+                 this.contacts[this.contactActive].visible = false 
             }
         }
     }

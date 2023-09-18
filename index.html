@@ -113,7 +113,9 @@
                             <li v-for="(contact,index) in contacts"
                                 @click="setContactActive(index)">
 
-                                <div v-if="contact.visible"
+
+                                <!-- v-if="contact.visible" v-if="contact.name.toLowerCase().includes(contactName.toLowerCase())" -->
+                                <div v-if="contact.visible" 
                                     class="contact d-flex justify-content-between px-2"
                                     :class="contactActive == index ? 'bg_light' : '' ">
 
@@ -129,11 +131,15 @@
 
                                             <div class="ms-2">
                                                 <div> {{contact.name}} </div>
-                                                <div class="last_message">
-                                                    {{contact.messages[contact.messages.length - 1].message}}
+                                                <!-- FIXARE V-IF v-if="contact.messages.length > 0"-->
+                                                <div class="last_message" v-if="contact.messages.length > 0">
+                                                    {{contact.messages[contact.messages.length
+                                                    - 1].message}}
                                                 </div>
+                                                <!-- <div v-else  class="last_message">
+                                                    Nessun messaggio da mostrare
+                                                </div> -->
                                                 <!--  ⏫ DA SISTEMARE ⏫-->
-
 
                                             </div>
 
@@ -142,9 +148,15 @@
 
                                     </div>
 
-                                    <div class="last_message_time pt-4 col-2">
+                                    <!-- FIXARE V-IF v-if="contact.messages.length > 0"-->
+                                    <div class="last_message_time pt-4 col-2" v-if="contact.messages.length > 0"
+                                        >
                                         {{contact.messages[contact.messages.length
                                         - 1].date}}
+                                    </div>
+                                    
+                                    <div v-else class="last_message_time pt-4 col-2">
+                                       
                                     </div>
 
                                 </div>
@@ -179,7 +191,9 @@
                                 </div>
 
                                 <div>
-                                    Ultimo accesso alle: {{contacts[contactActive].messages[contacts[contactActive].messages.length - 1].date}}
+                                    Ultimo accesso alle:
+                                    {{contacts[contactActive].messages[contacts[contactActive].messages.length
+                                    - 1].date}}
                                 </div>
                             </div>
 
@@ -226,15 +240,17 @@
                                     class="rounded-2"
                                     :class=" message.status === 'sent' ? 'sent align-self-end' : 'received align-self-start' ">
 
-                                    <div class="message_body p-2 ps-2 d-flex justify-content-between gap-1">
+                                    <div
+                                        class="message_body p-2 ps-2 d-flex justify-content-between gap-1">
 
-                                        <div>{{message.message}}</div>
+                                        <div class="message_content">{{message.message}}</div>
 
                                         <button class="message_options d-flex"
                                             data-bs-toggle="dropdown"
                                             aria-expanded="false">
 
-                                            <i class="fa fa-chevron-down align-self-center"
+                                            <i
+                                                class="fa fa-chevron-down align-self-center"
                                                 aria-hidden="true"></i>
 
                                         </button>
@@ -254,7 +270,8 @@
                                                 <div class="dropdown-item">Importante</div>
                                             </li>
                                             <li>
-                                                <div class="dropdown-item" @click="deleteThisMessage(message,index)">Elimina</div>
+                                                <div class="dropdown-item"
+                                                    @click="deleteThisMessage(message,index)">Elimina</div>
                                             </li>
                                         </ul>
 
@@ -315,7 +332,6 @@
             <!-- /#app_body -->
 
         </div>
-
 
         <script src="./assets/js/luxon.min.js"></script>
         <script
