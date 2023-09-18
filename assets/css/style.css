@@ -25,6 +25,10 @@ body {
 button:hover {
     background-color: transparent;
 }
+
+.modal-backdrop {
+    z-index: -1;
+  }
 /* #endregion common */
 
 /* #region app*/
@@ -106,6 +110,10 @@ button {
 
 .bg_light {
     background-color: var(--bz-light);
+}
+
+.avatar_contact {
+    aspect-ratio: 1/1;
 }
 
 /* /#list_message */

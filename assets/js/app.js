@@ -13,21 +13,20 @@
 
 7)fare scroll in giù in automatico fino al messaggio più recente, quando viene aggiunto un nuovo messaggio alla conversazione (NB: potrebbe esserci bisogno di utilizzare nextTick: https://vuejs.org/api/general.html#nexttick)
 
-manda un messaggio vocale
+8)manda un messaggio vocale
 
 
 
 Grafica
+9)visualizzare un messaggio di benvenuto che invita l'utente a selezionare un contatto dalla lista per visualizzare i suoi messaggi, anziché attivare di default la prima conversazione
 
-8)visualizzare un messaggio di benvenuto che invita l'utente a selezionare un contatto dalla lista per visualizzare i suoi messaggi, anziché attivare di default la prima conversazione
+10)aggiungere una splash page visibile per 1s all'apertura dell'app
 
-9)aggiungere una splash page visibile per 1s all'apertura dell'app
+11) A) rendere l'app responsive e fruibile anche su mobile: di default si visualizza solo la lista dei contatti e cliccando su un contatto si vedono i messaggi di quel contatto. B) aggiungere quindi un'icona con una freccia verso sinistra per tornare indietro, dalla visualizzazione della chat alla visualizzazione di tutti i contatti
 
-10) A) rendere l'app responsive e fruibile anche su mobile: di default si visualizza solo la lista dei contatti e cliccando su un contatto si vedono i messaggi di quel contatto. B) aggiungere quindi un'icona con una freccia verso sinistra per tornare indietro, dalla visualizzazione della chat alla visualizzazione di tutti i contatti
+12)aggiungere un'icona per ingrandire o rimpicciolire il font: dovrebbe essere sufficiente aggiungere una classe al wrapper principale
 
-11)aggiungere un'icona per ingrandire o rimpicciolire il font: dovrebbe essere sufficiente aggiungere una classe al wrapper principale
-
-12)aggiungere un'icona per cambiare la modalità light/dark: dovrebbe essere sufficiente aggiungere una classe al wrapper principale */
+13)aggiungere un'icona per cambiare la modalità light/dark: dovrebbe essere sufficiente aggiungere una classe al wrapper principale */
 
 const { DateTime } = luxon
 
@@ -44,6 +43,10 @@ createApp({
             contactName: '',
 
             displayMic: true,
+
+            nameNewChat: '',
+
+            imgNewChat: '',
 
             //FIXARE DATA PRENDENDOLA DA MESSAGES.DATE
             userStatus:'Ultimo accesso alle:' + DateTime.fromISO(2023-9-17).toFormat('T'),
@@ -312,6 +315,26 @@ createApp({
         deleteChat () {
 
             this.contacts.splice([this.contactActive],1)
+            //NON FUNZIONA SULLE NUOVE CHAT CREATE
+        },
+
+        newChat () {
+
+            if (this.nameNewChat.trim() !== '') {
+
+                this.contacts.push({
+
+                    name: this.nameNewChat,
+                    avatar: `https://picsum.photos/200/300?random=${Math.floor(Math.random()*100)+1}`,
+                    visible: true,
+                    messages: []
+
+                })
+                
+            }
+
+            this.nameNewChat = '';
+            this.imgNewChat = '';
 
         },
 

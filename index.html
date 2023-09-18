@@ -104,6 +104,59 @@
                             v-model="contactName"
                             @keyup="searchContact()">
 
+                        <!-- Button trigger modal -->
+                        <button type="button" data-bs-toggle="modal"
+                            data-bs-target="#new_chat"
+                            class="d-inline-block bg-white ms-1 px-1">
+                            <i class="fa fa-plus-square" aria-hidden="true"></i>
+                        </button>
+                        <!-- Modal -->
+                        <div class="modal fade" id="new_chat" tabindex="-1"
+                            aria-labelledby="exampleModalLabel"
+                            aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h1 class="modal-title fs-5"
+                                            id="exampleModalLabel">Crea una
+                                            nuova chat</h1>
+                                        <button type="button" class="btn-close"
+                                            data-bs-dismiss="modal"
+                                            aria-label="Close"></button>
+                                    </div>
+
+                                    <div class="modal-body">
+
+                                        <div class="form-floating mb-3">
+                                            <input v-model="nameNewChat" type="text"
+                                                class="form-control"
+                                                id="name"
+                                                required>
+                                            <label for="name">Nome Contatto</label>
+                                        </div>
+
+                                        <div class="form-floating mb-3">
+                                            <input v-model="imgNewChat" type="text"
+                                                class="form-control"
+                                                id="img"
+                                                required>
+                                            <label for="img">Link Immagine Profilo</label>
+                                        </div>
+
+                                    </div>
+
+                                    <div class="modal-footer">
+
+                                        <button type="button"
+                                            class="btn btn-success" data-bs-dismiss="modal" @click="newChat()">
+                                            Crea
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /Modal -->
+
                     </div>
 
                     <div class="contact_list">
@@ -126,7 +179,7 @@
                                             <img width="50"
                                                 :src="contact.avatar"
                                                 alt="immagine dell'utente"
-                                                class="rounded-circle">
+                                                class="rounded-circle avatar_contact">
 
                                             <div class="ms-2">
                                                 <div> {{contact.name}} </div>
@@ -186,7 +239,7 @@
                             <img width="50"
                                 :src="contacts[contactActive].avatar"
                                 alt="immagine dell'utente"
-                                class="rounded-circle">
+                                class="rounded-circle avatar_contact">
 
                             <div class="ms-2">
 
@@ -233,10 +286,13 @@
                             <ul
                                 class="dropdown-menu dropdown-menu-end dropdown-menu-dark">
                                 <li>
-                                    <div class="dropdown-item" @click="deleteAllMessages()">Elimina messaggi</div>
+                                    <div class="dropdown-item"
+                                        @click="deleteAllMessages()">Elimina
+                                        messaggi</div>
                                 </li>
                                 <li>
-                                    <div class="dropdown-item" @click="deleteChat()">Elimina chat</div>
+                                    <div class="dropdown-item"
+                                        @click="deleteChat()">Elimina chat</div>
                                 </li>
 
                             </ul>
