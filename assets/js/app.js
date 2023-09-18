@@ -45,6 +45,9 @@ createApp({
 
             displayMic: true,
 
+            //FIXARE DATA PRENDENDOLA DA MESSAGES.DATE
+            userStatus:'Ultimo accesso alle:' + DateTime.fromISO(2023-9-17).toFormat('T'),
+
             messagesOutput: [
                 'Ok!',
                 'va bene.',
@@ -246,6 +249,8 @@ createApp({
 
         sentMessage() {
 
+            this.userStatus = 'Sta scrivendo...'
+
             if (this.userMessage.trim() !== '') {
 
                 this.contacts[this.contactActive].messages.push({
@@ -256,7 +261,8 @@ createApp({
 
                 })
                 
-                timeoutAutoMessage = setTimeout(this.messageAuto, 1000)
+                timeoutAutoMessage = setTimeout(this.messageAuto, 1000);
+                statusContact = setTimeout(this.statusOnline, 3000)
             }
 
             this.userMessage = '';
@@ -267,6 +273,8 @@ createApp({
 
         messageAuto() {
 
+            
+
             this.contacts[this.contactActive].messages.push({
 
                 date: DateTime.now().toFormat('T'),
@@ -276,7 +284,17 @@ createApp({
                 status: 'received'
 
             });
+
+            this.userStatus='Online'
+
         },
+
+        statusOnline () {
+            //FIXARE DATA PRENDENDOLA DA MESSAGES.DATE
+            this.userStatus= 'Ultimo accesso alle:' + DateTime.fromISO(2023-9-17).toFormat('T')
+        },
+        
+        
 
         deleteThisMessage(message, index) {
             console.log(message, index);
