@@ -24,7 +24,7 @@
 
         <div id="app" class="vh-100">
 
-            <main v-if="splashPage" id="app_body" class="d-flex">
+            <main v-if="splashPage" id="app_body" class="d-flex"  :class="bigFont == true ? 'fs-4' : '' ">
 
                 <div id="list_message"   :class="contactList == false ? 'd-none d-lg-block' : 'd-block' ">
 
@@ -45,6 +45,12 @@
 
                         <div
                             class="avatar_options d-flex align-items-center gap-3 pe-3">
+
+                            <button @click="toggleFontSize()">
+
+                                <i class="fa-solid fa-maximize"></i>
+
+                            </button>
 
                             <button>
 
@@ -185,7 +191,7 @@
                                                 <div> {{contact.name}} </div>
                                                 <!-- FIXARE V-IF v-if="contact.messages.length > 0"-->
                                                 <div class="last_message"
-                                                    v-if="contact.messages.length > 0">
+                                                    v-if="contact.messages.length > 0" :class="bigFont == true ? 'fs-6' : '' ">
                                                     {{contact.messages[contact.messages.length
                                                     - 1].message}}
                                                 </div>
@@ -205,8 +211,8 @@
                                     </div>
 
                                     <!-- FIXARE V-IF v-if="contact.messages.length > 0"-->
-                                    <div class="last_message_time pt-4 col-2"
-                                        v-if="contact.messages.length > 0">
+                                    <div class="last_message_time pt-4 col-3 text-end"
+                                        v-if="contact.messages.length > 0" :class="bigFont == true ? 'fs-6' : '' ">
                                         {{contact.messages[contact.messages.length
                                         - 1].date}}
                                     </div>
