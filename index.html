@@ -102,7 +102,7 @@
                         <input type="text" class="w-100 border-0 rounded-2 px-2"
                             placeholder="Cerca o inizia una nuova chat"
                             v-model="contactName"
-                            @keyup="searchContact(contactName)">
+                            @keyup="searchContact()">
 
                     </div>
 
@@ -135,6 +135,9 @@
                                                 <div class="last_message" v-if="contact.messages.length > 0">
                                                     {{contact.messages[contact.messages.length
                                                     - 1].message}}
+                                                </div>
+                                                <div v-else class="last_message">
+                                                    Nessun messaggio da mostrare
                                                 </div>
                                                 <!-- <div v-else  class="last_message">
                                                     Nessun messaggio da mostrare
@@ -190,7 +193,7 @@
                                     {{contacts[contactActive].name}}
                                 </div>
 
-                                <div>
+                                <div v-if="contacts[contactActive].messages.length > 0">
                                     Ultimo accesso alle:
                                     {{contacts[contactActive].messages[contacts[contactActive].messages.length
                                     - 1].date}}
@@ -235,8 +238,8 @@
                                 v-for="(message,index) in contacts[contactActive].messages"
                                 class="mb-2 d-flex flex-column"
                                 :class=" message.status === 'sent' ? 'box_message_sent' : 'box_message_received' ">
-
-                                <div
+                                
+                                <div  v-if="contacts[contactActive].messages.length > 0"
                                     class="rounded-2"
                                     :class=" message.status === 'sent' ? 'sent align-self-end' : 'received align-self-start' ">
 
@@ -282,6 +285,12 @@
                                         {{message.date}}
                                     </div>
 
+                                </div>
+
+
+                                <!-- DA FIXAREEEEEEEE -->
+                                <div v-else class="bg-danger">
+                                    Nessun messaggio da mostrare
                                 </div>
 
                             </div>

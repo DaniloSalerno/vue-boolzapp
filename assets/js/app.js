@@ -1,8 +1,3 @@
-/* Milestone 1
-Replica della grafica con la possibilità di avere messaggi scritti dall'utente (verdi) e dall'interlocutore (bianco) assegnando due classi CSS diverse
-
-Visualizzazione dinamica della lista contatti: tramite la direttiva v-for, visualizzare nome e immagine di ogni contatto */
-
 const { DateTime } = luxon
 
 const { createApp } = Vue
@@ -192,24 +187,17 @@ createApp({
 
         },
 
-        /* ⏬ THIS DOESN'T WORK AS I WONT ⏬ */
-         searchContact(contactName) {
+        searchContact() {
 
-            this.contacts.forEach(function (item, index, contacts) {
+             this.contacts.forEach( (contact,index) => {
                 
-                if (contactName === '' && contacts[index].messages.length > 0) {
+                if (this.contacts[index].name.toLowerCase().includes(this.contactName.toLowerCase())) {
 
-                    contacts[index].visible = true
-                    
+                    this.contacts[index].visible = true
+
+                } else {
+                    this.contacts[index].visible = false
                 }
-
-                if (!item.name.toLowerCase().includes(contactName.toLowerCase())) {
-
-                    contacts[index].visible = false
-
-                }
-
-                 //QUANDO VIENE CANCELLATA UNA LETTERA NON VIENE ESEGUITO IL CONTROLLO 
 
             })
         }, 
@@ -244,20 +232,7 @@ createApp({
             console.log(message,index);
             
             this.contacts[this.contactActive].messages.splice(index,1)
-            /* DOPO AVER CLICCATO ELIMINA SULL' ULTIMO MESSAGGIO RIMASTO NON VIENE ELIMINATO.
-            L'IF CHE SEGUE SERVE PER ELIMINARE IL CONTATTO DALLA LISTA MA FUNZIONA SOLO SE VIENE CLICCATO UN ALTRO CONTATTO
-            */
-
-            if (this.contacts[this.contactActive].messages.length == 0) {
-
-                this.contacts[this.contactActive].messages.push({
-                    message: 'Nessun messaggio da mostrare'
-                })
-
-                //⏬SE NON CI SONO MESSAGGI ELIMINA CONTATTO DALLA LISTA⏬
-
-                 this.contacts[this.contactActive].visible = false 
-            }
+            
         }
     }
 
