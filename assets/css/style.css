@@ -154,7 +154,7 @@ button {
 
 .sent, .received {
     max-width: 50%;
-    word-wrap: break-word;
+    word-wrap: anywhere;
 }
 
 .message_time {
