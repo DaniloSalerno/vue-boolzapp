@@ -43,6 +43,8 @@ createApp({
 
             contactName: '',
 
+            displayMic: true,
+
             contacts: [
                 {
                     name: 'Michele',
@@ -249,6 +251,7 @@ createApp({
             }
 
             this.userMessage = '';
+            this.displayMic = true;
 
             
         },
@@ -269,7 +272,21 @@ createApp({
 
             this.contacts[this.contactActive].messages.splice(index, 1)
 
-        }
-    }
+        },
 
+        displayMicOrSend () {
+            
+            
+
+            if (this.userMessage.trim() !== '') {
+
+                this.displayMic = false;
+
+            }
+            
+        }
+
+    }   
+
+    
 }).mount('#app')
