@@ -28,7 +28,7 @@
 
                 <div id="list_message"   :class="contactList == false ? 'd-none d-lg-block' : 'd-block' ">
 
-                    <div class="list_header d-flex justify-content-between">
+                    <div class="list_header d-flex justify-content-between" :class="darkMode == true ? 'bg-dark text-light' : '' ">
 
                         <div class="avatar d-flex align-items-center p-2">
 
@@ -45,6 +45,13 @@
 
                         <div
                             class="avatar_options d-flex align-items-center gap-3 pe-3">
+
+
+                            <button @click="toggleDarkMode()">
+
+                                <i class="fa-solid fa-circle-half-stroke"></i>
+
+                            </button>
 
                             <button @click="toggleFontSize()">
 
@@ -76,7 +83,7 @@
                     </div>
                     <!-- /.list_header -->
 
-                    <div class="notifications d-flex align-items-center ps-3">
+                    <div class="notifications d-flex align-items-center ps-3" :class="darkMode == true ? 'bg-dark text-light' : '' ">
 
                         <div
                             class="bell d-flex justify-content-center align-items-center bg-white rounded-circle">
@@ -99,13 +106,13 @@
                     </div>
                     <!-- /.notifications -->
 
-                    <div class="contact_search p-2 d-flex">
+                    <div class="contact_search p-2 d-flex" :class="darkMode == true ? 'bg-dark text-light' : '' ">
 
-                        <button class="d-inline-block bg-white px-4">
+                        <button class="d-inline-block bg-white px-4 bg-transparent">
                             <i class="fa-solid fa-magnifying-glass"></i>
                         </button>
 
-                        <input type="text" class="w-100 border-0 rounded-2 px-2"
+                        <input type="text" class="w-100 border-0 rounded-2 px-2" :class="darkMode == true ? 'bg-dark text-light' : '' "
                             placeholder="Cerca o inizia una nuova chat"
                             v-model="contactName"
                             @keyup="searchContact()">
@@ -113,7 +120,7 @@
                         <!-- Button trigger modal -->
                         <button type="button" data-bs-toggle="modal"
                             data-bs-target="#new_chat"
-                            class="d-inline-block bg-white ms-1 px-1">
+                            class="d-inline-block bg-white ms-1 px-1 bg-transparent">
                             <i class="fa fa-plus-square" aria-hidden="true"></i>
                         </button>
                         <!-- Modal -->
@@ -165,7 +172,7 @@
 
                     </div>
 
-                    <div class="contact_list">
+                    <div class="contact_list" :class="darkMode == true ? 'bg-dark text-light' : '' ">
 
                         <ul class="list-unstyled">
 
@@ -175,7 +182,7 @@
                                 <!-- v-if="contact.visible" v-if="contact.name.toLowerCase().includes(contactName.toLowerCase())" -->
                                 <div v-if="contact.visible"
                                     class="contact d-flex justify-content-between px-2"
-                                    :class="contactActive == index ? 'bg_light' : '' ">
+                                    :class="contactActive == index ? 'bg_light text-dark' : '' " :class="darkMode == true ? 'bg-dark text-light' : '' ">
 
                                     <div>
 
@@ -238,7 +245,7 @@
 
                 <div id="chat" :class="chatContact == false ? 'd-none d-lg-block' : 'd-block' ">
 
-                    <div class="chat_header d-flex justify-content-between">
+                    <div class="chat_header d-flex justify-content-between" :class="darkMode == true ? 'bg-dark text-light' : '' ">
 
                         <div v-if="contactSelected" class="avatar d-flex align-items-center p-2">
 
@@ -392,7 +399,7 @@
                     </div>
 
                     <div
-                        class="chat_footer d-flex justify-content-around align-items-center gap-3 px-3">
+                        class="chat_footer d-flex justify-content-around align-items-center gap-3 px-3" :class="darkMode == true ? 'bg-dark text-light' : '' ">
 
                         <button>
 

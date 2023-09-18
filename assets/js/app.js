@@ -26,7 +26,7 @@ Grafica
 
 ✅ 12)aggiungere un'icona per ingrandire o rimpicciolire il font: dovrebbe essere sufficiente aggiungere una classe al wrapper principale
 
-13)aggiungere un'icona per cambiare la modalità light/dark: dovrebbe essere sufficiente aggiungere una classe al wrapper principale */
+✅ 13)aggiungere un'icona per cambiare la modalità light/dark: dovrebbe essere sufficiente aggiungere una classe al wrapper principale */
 
 const { DateTime } = luxon
 const { nextTick } = Vue
@@ -57,6 +57,8 @@ createApp({
             chatContact : false,
 
             bigFont : false,
+
+            darkMode : false,
 
             //FIXARE DATA PRENDENDOLA DA MESSAGES.DATE
             userStatus:'Ultimo accesso alle:' + DateTime.fromISO(2023-9-17).toFormat('T'),
@@ -391,6 +393,20 @@ createApp({
             } else {
 
                 this.bigFont = false;
+
+            }
+
+        },
+
+        toggleDarkMode () {
+
+            if (this.darkMode === false) {
+
+                this.darkMode = true;
+                
+            } else {
+
+                this.darkMode = false;
 
             }
 
