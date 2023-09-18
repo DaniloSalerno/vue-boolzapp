@@ -124,10 +124,11 @@ button {
 /* #chat */
 #chat {
     width: 100%;
-    background-color: var(--bz-footer-light);
-
 }
 
+.bg_chat_footer {
+    background-color: var(--bz-footer-light);
+}
 .chat_body {
     height: calc(100% - 140px);
     background-image: url('../../img/mine.jpg');
@@ -136,7 +137,6 @@ button {
 
 .chat_footer {
     height: 70px;
-    background-color: var(--bz-footer-light);
 }
 
 .chat_container{
